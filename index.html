@@ -4,15 +4,22 @@
 
 <head>
     <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="mainController.js"></script>
 </head>
 
-<body>
+<body ng-app="app" ng-controller="mainController">
     <div class="container">
 
         <h1>Dropbox SDK test article</h1>
-        <ul id="files"></ul>
-        <buton onclick="listFiles()" class="btn btn-lg btn-primary">List files</buton>
+
+            <ul id="files"></ul>
+
+        
+        
+        
+        <buton ng-click="listFiles()" class="btn btn-lg btn-primary">List files</buton>
 
     </div>
 
