@@ -14,12 +14,13 @@
 
         <h1>Dropbox SDK test article</h1>
 
-            <ul id="files"></ul>
+        <div ng-repeat="file in files">
+            <a href="{{file.url}}">{{file.filename}}</a>
+        </div>
 
-        
-        
-        
-        <buton ng-click="listFiles()" class="btn btn-lg btn-primary">List files</buton>
+
+
+        <buton ng-click="showFileList()" class="btn btn-lg btn-primary">List files</buton>
 
     </div>
 
