@@ -1,7 +1,9 @@
 app.controller('mainController', function ($scope, $q) {
     var dbx = null;
     $scope.files = [];
-
+    $scope.selection = {};
+    var filesToShare = [];
+    
     $scope.showFileList = function () {
         listFiles().then(files => {
             $scope.files.length = 0;
@@ -46,6 +48,17 @@ app.controller('mainController', function ($scope, $q) {
                 console.error(error);
             });
     }
+    
+    $scope.submit = function(formData){
+        filesToShare.length = 0;
+        $scope.files.forEach(file =>{
+           if ($scope.selection.selected[file.filename] === true){
+               filesToShare.push({'filename':file.filename,'url':file.url});
+           }
+        });
+        console.log('share = ' , filesToShare);
+
+    };
 
 
 });

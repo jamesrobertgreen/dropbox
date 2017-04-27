@@ -13,17 +13,21 @@
     <div class="container">
 
         <h1>Dropbox SDK test article</h1>
+        <form name="fileShareData" ng-submit="submit()">
+            <div ng-repeat="file in files">
+                <div class="form-group">
+                    <input id="{{file.filename}}" name="group" ng-model="selection.selected[file.filename]" class="form-contorl" type="checkbox">
+                    <label for="{{file.filename}}">{{file.filename}}</label>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-lg btn-primary" ng-if="files.length!=0">
+        </form>
 
-        <div ng-repeat="file in files">
-            <a href="{{file.url}}">{{file.filename}}</a>
-        </div>
 
 
-
-        <buton ng-click="showFileList()" class="btn btn-lg btn-primary">List files</buton>
+        <buton ng-click="showFileList()" class="btn btn-lg btn-primary" ng-if="files.length==0">List files</buton>
 
     </div>
-
 </body>
 
 
