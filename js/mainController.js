@@ -3,11 +3,11 @@ app.controller('mainController', function ($scope, $q, APP_CONFIG) {
     $scope.files = [];
     $scope.selection = {};
     var filesToShare = [];
-    
+
     $scope.showFileList = function () {
         var target = document.getElementById('dropbox-files');
         var spinner = new Spinner(opts).spin(target);
-        
+
         listFiles().then(files => {
             $scope.files.length = 0;
             // apply once we have all the files and urls
@@ -97,10 +97,7 @@ app.controller('mainController', function ($scope, $q, APP_CONFIG) {
         console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
     }
     var onError = function (msg) {
-        console.log("Sharing failed with message: " + msg);
-        if (window.navigator) {
-            navigator.notification.alert('No email client configured for sharing.');
-        }
+        notification('Email cannot be sent - ' + msg);
     }
 
     var createHTMLlinks = function (filesToShare) {
