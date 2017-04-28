@@ -1,4 +1,4 @@
-app.controller('mainController', function ($scope, $q) {
+app.controller('mainController', function ($scope, $q, APP_CONFIG) {
     var dbx = null;
     $scope.files = [];
     $scope.selection = {};
@@ -15,9 +15,8 @@ app.controller('mainController', function ($scope, $q) {
     }
 
     listFiles = function () {
-        var ACCESS_TOKEN = '5TvwQ0C2DlAAAAAAAAAADFU4naUdxFM-NjDCoJWAxLnCH8IK1VR1W37LhBd2l2mp';
         dbx = new Dropbox({
-            accessToken: ACCESS_TOKEN
+            accessToken: APP_CONFIG.ACCESS_TOKEN
         });
 
         return dbx.filesListFolder({
