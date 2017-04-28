@@ -22,18 +22,11 @@
                     <label for="{{file.filename}}">{{file.filename}}</label>
                 </div>
             </div>
-            <input type="submit" class="btn btn-lg btn-primary" ng-if="files.length!=0">
+            <input type="submit" value="Share" class="btn btn-lg btn-primary" ng-if="files.length!=0">
         </form>
-
-
-
         <buton ng-click="showFileList()" class="btn btn-lg btn-primary" ng-if="files.length==0">List files</buton>
-        <button onclick="window.plugins.socialsharing.share('Here is your PDF file', 'Your PDF', 'www/files/manual.pdf')">Share PDF test</button>
-        <button ng-click="shareViaEmail1()">Email1</button>
-        <button ng-click="shareViaEmail2()">Email2</button>
-        <button ng-click="shareViaEmail3()">Email3</button>
-        {{test}}
     </div>
+    {{test}}
 </body>
 
 
