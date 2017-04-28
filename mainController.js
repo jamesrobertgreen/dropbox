@@ -49,7 +49,12 @@ app.controller('mainController', function ($scope, $q) {
             });
     }
 
-    $scope.submit = function (formData) {
+    $scope.share = function () {
+        if ($scope.selection.selected == undefined){
+            notification('No files selected');
+            return;
+        }
+        
         filesToShare.length = 0;
         $scope.files.forEach(file => {
             if ($scope.selection.selected[file.filename] === true) {
@@ -59,16 +64,17 @@ app.controller('mainController', function ($scope, $q) {
                 });
             }
         });
-        console.log('share = ', filesToShare);
+        // ensure that at least 1 selection was true
         if (filesToShare.length != 0) {
             shareViaEmail(filesToShare);
+        } else {
+            notification('Please select files to share');
         }
 
     };
 
 
     var shareViaEmail = function (filesToShare) {
-
         var html = createHTMLlinks(filesToShare);
         // check for a configured email client
         window.plugins.socialsharing.canShareViaEmail( // share something
@@ -106,5 +112,12 @@ app.controller('mainController', function ($scope, $q) {
         return html;
     };
 
+    var notification = function (message) {
+        if (window.navigator) {
+            navigator.notification.alert(message);
+        } else {
+            console.log(message);
+        }
+    };
 
 });

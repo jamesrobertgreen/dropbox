@@ -13,20 +13,22 @@
 
 <body ng-app="app" ng-controller="mainController">
     <div class="container">
-
-        <h1>Dropbox SDK test article</h1>
-        <form name="fileShareData" ng-submit="submit()">
-            <div ng-repeat="file in files">
-                <div class="form-group">
-                    <input id="{{file.filename}}" name="group" ng-model="selection.selected[file.filename]" class="form-contorl" type="checkbox">
-                    <label for="{{file.filename}}">{{file.filename}}</label>
-                </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Dropbox SDK test article</h1>
+                <form name="fileShareData" ng-submit="share()">
+                    <div ng-repeat="file in files">
+                        <div class="form-group">
+                            <input id="{{file.filename}}" name="group" ng-model="selection.selected[file.filename]" class="form-contorl" type="checkbox">
+                            <label for="{{file.filename}}">{{file.filename}}</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Share" class="btn btn-lg btn-primary" ng-if="files.length!=0">
+                </form>
+                <buton ng-click="showFileList()" class="btn btn-lg btn-primary" ng-if="files.length==0">List files</buton>
             </div>
-            <input type="submit" value="Share" class="btn btn-lg btn-primary" ng-if="files.length!=0">
-        </form>
-        <buton ng-click="showFileList()" class="btn btn-lg btn-primary" ng-if="files.length==0">List files</buton>
+        </div>
     </div>
-    {{test}}
 </body>
 
 
