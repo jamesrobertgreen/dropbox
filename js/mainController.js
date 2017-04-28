@@ -3,11 +3,15 @@ app.controller('mainController', function ($scope, $q, APP_CONFIG) {
     $scope.files = [];
     $scope.selection = {};
     var filesToShare = [];
-
+    
     $scope.showFileList = function () {
+        var target = document.getElementById('dropbox-files');
+        var spinner = new Spinner(opts).spin(target);
+        
         listFiles().then(files => {
             $scope.files.length = 0;
             // apply once we have all the files and urls
+            spinner.stop();
             $scope.$apply(function () {
                 files.forEach(e => $scope.files.push(e));
             });
@@ -49,11 +53,11 @@ app.controller('mainController', function ($scope, $q, APP_CONFIG) {
     }
 
     $scope.share = function () {
-        if ($scope.selection.selected == undefined){
+        if ($scope.selection.selected == undefined) {
             notification('No files selected');
             return;
         }
-        
+
         filesToShare.length = 0;
         $scope.files.forEach(file => {
             if ($scope.selection.selected[file.filename] === true) {
