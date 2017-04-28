@@ -5,8 +5,10 @@
 <head>
     <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
     <script src="app.js"></script>
     <script src="mainController.js"></script>
+
 </head>
 
 <body ng-app="app" ng-controller="mainController">
@@ -26,7 +28,11 @@
 
 
         <buton ng-click="showFileList()" class="btn btn-lg btn-primary" ng-if="files.length==0">List files</buton>
-
+        <button onclick="window.plugins.socialsharing.share('Here is your PDF file', 'Your PDF', 'www/files/manual.pdf')">Share PDF test</button>
+        <button ng-click="shareViaEmail1()">Email1</button>
+        <button ng-click="shareViaEmail2()">Email2</button>
+        <button ng-click="shareViaEmail3()">Email3</button>
+        {{test}}
     </div>
 </body>
 
